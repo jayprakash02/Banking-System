@@ -178,7 +178,7 @@
                           class="btn btn-outline-warning btn-sm waves-effect waves-light"
                           style="width: 140px;"
                         >
-                          Send message
+                          Send Credits
                         </button>
                       </div>
                     </div>
