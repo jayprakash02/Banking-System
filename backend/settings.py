@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'backend.api.apps',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR/'dist'/'static',BASE_DIR/'dist']
-
+STATIC_ROOT = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Insert Whitenoise Middleware at top but below Security Middleware
