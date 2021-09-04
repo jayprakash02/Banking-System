@@ -23,4 +23,4 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', SECRET_KEY)
 
 # Set to your Domain here (eg. 'django-vue-template-demo.herokuapp.com')
 ALLOWED_HOSTS = ['*']
-# STATIC_ROOT = BASE_DIR/'dist'/'static'
+STATIC_ROOT = BASE_DIR/'dist'/'static'

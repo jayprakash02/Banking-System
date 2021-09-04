@@ -131,8 +131,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ##########
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR/'dist'/'static',BASE_DIR/'dist']
-STATIC_ROOT = '/static/'
+# STATICFILES_DIRS = [BASE_DIR/'dist'/'static',BASE_DIR/'dist']
+STATIC_ROOT = BASE_DIR/'dist'/'static'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Insert Whitenoise Middleware at top but below Security Middleware
