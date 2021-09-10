@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status,generics
 
 from rest_framework.views import APIView
 
@@ -26,6 +26,7 @@ class Details(APIView):
             customer_instance.save()
             details = {'name':customer_instance.name,'ID':customer_instance.cutomer_id,'wallet':customer_instance.wallet,'email':customer_instance.email}
             return Response(details,status=status.HTTP_201_CREATED)
+    
             
 class Transfer(APIView):
     def get(self,request):
@@ -62,3 +63,7 @@ class Transfer(APIView):
                 return Response('Customer Does not exist !!', status=status.HTTP_404_NOT_FOUND)
         else:
             return Response('Bad Request',status=status.HTTP_400_BAD_REQUEST)
+
+class CustomerList(generics.ListAPIView):
+    queryset=Customer.objects.all()
+    serializer_class=CustomerSerializer

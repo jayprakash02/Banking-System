@@ -10,7 +10,11 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class CustomerSerializer(ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = "__all__"
     
 class Transcation(models.Model):
     transcation_id=models.UUIDField(default=uuid.uuid4,primary_key=True,auto_created=True)
