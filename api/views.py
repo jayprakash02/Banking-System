@@ -29,10 +29,11 @@ class Details(APIView):
     
             
 class Transfer(APIView):
-    def get(self,request):
+    def get(self,request,*args, **kwargs):
         transction={}
-        if self.request.data.__contains__("ID") and Customer.objects.all().filter(cutomer_id=self.request.data["ID"]).exists():
-            customer_instance=Customer.objects.get(cutomer_id=self.request.data["ID"])
+        print(self.request.query_params)
+        if self.request.query_params.__contains__("ID") and Customer.objects.all().filter(cutomer_id=self.request.query_params["ID"]).exists():
+            customer_instance=Customer.objects.get(cutomer_id=self.request.query_params["ID"])
             # for i in customer_instance.to_customer:
             credit = TranscationSerializer(customer_instance.to_customer,many=True)
             transfer = TranscationSerializer(customer_instance.from_customer,many=True)
