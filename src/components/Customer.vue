@@ -1,211 +1,199 @@
 <template>
-  <section class="mt-md-4 pt-md-2 mb-5 pb-4">
-    <!-- Card -->
+  <!-- Grid column -->
 
-    <!-- Section: Chart -->
-    <section>
-      <!-- Grid row -->
-      <div class="row">
-        <!-- Grid column -->
-        <div class="col-xl-5 col-lg-12 mr-0 pb-2">
-          <div class="row py-3 pl-4">
-            <div class="col-md-12">
+  <div class="col-xl-7 col-md-12 mr-0 pb-2">
+    <!-- Card image -->
+    <div class="card card-cascade narrower dark-card-admin text-white">
+      <div
+        class="view view-cascade gradient-card-header light-blue lighten-1 white black lighten-4"
+      >
+        <h2 class="h2-responsive mb-0 font-weight-500">
+          Customer Available
+        </h2>
+      </div>
+
+      <!-- Card content -->
+      <div class="card-body card-body-cascade pb-0">
+        <!-- Panel data -->
+        <div class="row py-3 pl-4">
+          <!-- First column -->
+          <div class="col-md-6">
+            <!-- Date select -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#fluidModalRightSuccessDemo"
+            >
+              Search Customers
+            </button>
+            <div class="card-body card-body-cascade">
+              <p v-if="user" class="card-text text-white">
+                Selected Customer: {{ user.name }}
+              </p>
+            </div>
+
+            <div
+              class="modal fade right"
+              id="fluidModalRightSuccessDemo"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="myModalLabel"
+              aria-hidden="true"
+              data-backdrop="false"
+            >
               <div
-                class="card card-cascade cascading-admin-card dark-card-admin text-white"
+                class="modal-dialog modal-full-height modal-right modal-notify modal-info"
+                role="document"
               >
-                <!-- Card Data -->
-                <div class="admin-up">
-                  <div class="data">
-                    <p class="text-uppercase text-white">Personal Details</p>
-                    <h4 class="font-weight-bold">Jay Prakash</h4>
+                <!-- Content -->
+                <div class="modal-content">
+                  <!-- Header -->
+                  <div class="modal-header">
+                    <p class="heading lead">Avilable Customers</p>
+
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                  </div>
+
+                  <!-- Body -->
+
+                  <div class="modal-body">
+                    <fieldset
+                      v-for="list in lists"
+                      :key="list.cutomer_id"
+                      class="form-check mb-4"
+                    >
+                      <input
+                        class="form-check-input"
+                        name="group1"
+                        type="radio"
+                        :id="list.cutomer_id"
+                        :value="list"
+                        v-model="user"
+                      />
+                      <label class="form-check-label" :for="list.cutomer_id">{{
+                        list.name
+                      }}</label>
+                    </fieldset>
+                  </div>
+
+                  <!-- Footer -->
+                  <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-info" data-dismiss="modal"
+                      >Select <i class="far fa-gem ml-1"></i
+                    ></a>
+
+                    <a
+                      type="button"
+                      class="btn btn-outline-danger waves-effect"
+                      data-dismiss="modal"
+                      v-on:click="user = ''"
+                      >Cancel</a
+                    >
                   </div>
                 </div>
-
-                <!-- Card content -->
-                <div class="card-body card-body-cascade">
-                  <p class="card-text text-white">
-                    Email:
-                  </p>
-                  <p class="font-weight-bold">unijay12@gmail.com</p>
-
-                  <p class="card-text text-white">Credit Available:</p>
-                  <h4 class="font-weight-bold">2000</h4>
-
-                  <div class="progress mb-3">
-                    <div
-                      class="progress-bar bg-primary"
-                      role="progressbar"
-                      style="width: 20%"
-                      aria-valuenow="800"
-                      aria-valuemin="0"
-                      aria-valuemax="1000"
-                    ></div>
-                  </div>
-                </div>
+                <!-- Content -->
               </div>
             </div>
           </div>
-        </div>
+          <!-- First column -->
 
-        <div class="col-xl-7 col-md-12 mr-0 pb-2">
-          <!-- Card image -->
-          <div class="card card-cascade narrower dark-card-admin text-white">
-            <div
-              class="view view-cascade gradient-card-header light-blue lighten-1 white black lighten-4"
-            >
-              <h2 class="h2-responsive mb-0 font-weight-500">
-                Customer Available
-              </h2>
-            </div>
+          <!-- Second column -->
+          <div class="col-md-6 text-center pl-xl-2 my-md-0 my-3">
+            <!-- Summary -->
+            <form action="" method="post"></form>
+            <div class="md-form md-outline">
+              <input
+                type="text"
+                id="amount"
+                v-model="amount"
+                class="form-control"
+              />
+              <label for="username12">Amount</label>
 
-            <!-- Card content -->
-            <div class="card-body card-body-cascade pb-0">
-              <!-- Panel data -->
-              <div class="row py-3 pl-4">
-                <!-- First column -->
-                <div class="col-md-6">
-                  <!-- Date select -->
+              <div class="md-form md-outline">
+                <div class="card-foter text-right">
                   <button
                     type="button"
-                    class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#fluidModalRightSuccessDemo"
+                    class="btn btn-outline-warning btn-sm waves-effect waves-light"
+                    style="width: 140px;"
+                    v-on:click="transfer(+amount, user.cutomer_id)"
                   >
-                    Search Customers
+                    Send Credits
                   </button>
-
-                  <div
-                    class="modal fade right"
-                    id="fluidModalRightSuccessDemo"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="myModalLabel"
-                    aria-hidden="true"
-                    data-backdrop="false"
-                  >
-                    <div
-                      class="modal-dialog modal-full-height modal-right modal-notify modal-info"
-                      role="document"
-                    >
-                      <!-- Content -->
-                      <div class="modal-content">
-                        <!-- Header -->
-                        <div class="modal-header">
-                          <p class="heading lead">Modal Info</p>
-
-                          <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true" class="white-text"
-                              >&times;</span
-                            >
-                          </button>
-                        </div>
-
-                        <!-- Body -->
-                        <div class="modal-body">
-                          <fieldset class="form-check mb-4">
-                            <input
-                              class="form-check-input"
-                              name="group1"
-                              type="radio"
-                              id="radio1"
-                              checked="checked"
-                            />
-                            <label class="form-check-label" for="radio1"
-                              >Option 1</label
-                            >
-                          </fieldset>
-
-                          <fieldset class="form-check mb-4">
-                            <input
-                              class="form-check-input"
-                              name="group1"
-                              type="radio"
-                              id="radio2"
-                            />
-                            <label class="form-check-label" for="radio2"
-                              >Option 2</label
-                            >
-                          </fieldset>
-
-                          <fieldset class="form-check mb-4">
-                            <input
-                              class="form-check-input"
-                              name="group1"
-                              type="radio"
-                              id="radio3"
-                            />
-                            <label class="form-check-label" for="radio3"
-                              >Option 3</label
-                            >
-                          </fieldset>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="modal-footer justify-content-center">
-                          <a type="button" class="btn btn-info"
-                            >Get it now <i class="far fa-gem ml-1"></i
-                          ></a>
-                          <a
-                            type="button"
-                            class="btn btn-outline-success waves-effect"
-                            data-dismiss="modal"
-                            >No, thanks</a
-                          >
-                        </div>
-                      </div>
-                      <!-- Content -->
-                    </div>
-                  </div>
                 </div>
-                <!-- First column -->
-
-                <!-- Second column -->
-                <div class="col-md-6 text-center pl-xl-2 my-md-0 my-3">
-                  <!-- Summary -->
-                  <form action="" method="post"></form>
-                  <div class="md-form md-outline">
-                    <input type="text" id="username12" class="form-control" />
-                    <label for="username12">Amount</label>
-                    <div class="md-form md-outline">
-                      <div class="card-foter text-right">
-                        <button
-                          type="button"
-                          class="btn btn-outline-warning btn-sm waves-effect waves-light"
-                          style="width: 140px;"
-                        >
-                          Send Credits
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Second column -->
               </div>
-              <!-- Panel data -->
             </div>
-            <!-- Card content -->
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <!-- Grid column -->
+          <!-- Second column -->
         </div>
+        <!-- Panel data -->
       </div>
-      <!-- Grid row -->
-    </section>
+      <!-- Card content -->
+    </div>
+    <!-- Grid column -->
 
-    <!-- Card -->
-  </section>
+    <!-- Grid column -->
+    <!-- Grid column -->
+  </div>
 </template>
 
 <script>
+import api from "../api.js";
 export default {
   name: "Customer",
+  data() {
+    return {
+      lists: [],
+      user: {},
+      amount: "",
+    };
+  },
+  methods: {
+    async listCustomer() {
+      try {
+        const response = await api.get("/users/");
+        this.lists = response.data;
+      } catch {
+        console.log("error");
+      }
+    },
+    isUUID(uuid) {
+      let s = "" + uuid;
+
+      s = s.match(
+        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+      );
+      if (s === null) {
+        return false;
+      }
+      return true;
+    },
+    transfer(amount, id) {
+      if(amount!=NaN && this.isUUID(id)){
+        api.post('/transfer/',{'FROM':'2d3bbc60-9f18-4f90-b150-d5e3489e2c34','TO':id,'AMOUNT':amount})
+        .then(function(response){
+          alert(response.data)
+          this.user=''
+          this.amount=''
+        })
+        .catch(error=>alert(response.data))
+      }
+      else{
+        alert('if Not worked')
+      }
+    },
+  },
+  created() {
+    this.listCustomer();
+  },
 };
 </script>
 

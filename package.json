@@ -10,9 +10,13 @@
     "django-migrate": "python manage.py migrate"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
+    "js-cookie": "^3.0.1",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
+    "vue-cookies": "^1.7.4",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },

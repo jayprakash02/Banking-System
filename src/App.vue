@@ -12,20 +12,11 @@
 
       <!-- Breadcrumb -->
       <div class="breadcrumb-dn mr-auto">
-        <p class="text-white">Dashboard v.1</p>
+        <p class="text-white">BANK OF SBS</p>
       </div>
 
       <div class="d-flex change-mode">
-        <div class="ml-auto mb-0 mr-3 change-mode-wrapper">
-          <button
-            class="btn btn-sm waves-effect waves-light dark-grey-text text-white white text-dark"
-            id="dark-mode"
-          >
-            Change Mode
-          </button>
-        </div>
-
-        <!-- Navbar links -->
+               <!-- Navbar links -->
         <ul class="nav navbar-nav nav-flex-icons ml-auto">
           <!-- Dropdown -->
           <li class="nav-item dropdown notifications-nav">
