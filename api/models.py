@@ -22,7 +22,8 @@ class Transcation(models.Model):
     to_id=models.ForeignKey(Customer,related_name='to_customer',on_delete=models.CASCADE)
     from_id=models.ForeignKey(Customer,related_name='from_customer',on_delete=models.CASCADE)
     amount=models.FloatField(default=1)
-
+    class Meta:
+            ordering=['-date']
     def __str__(self):
         return 'From:{0} | TO:{1} | AMT:{2}'.format(self.from_id.name,self.to_id.name,self.amount)
 

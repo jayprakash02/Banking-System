@@ -13,8 +13,8 @@ index_view = never_cache(TemplateView.as_view(template_name='index.html'))
 
 class Details(APIView):
     def get(self,request):
-        if self.request.data.__contains__("ID") and Customer.objects.all().filter(cutomer_id=self.request.data["ID"]).exists():
-            customer_instance=Customer.objects.get(cutomer_id=self.request.data["ID"])
+        if self.request.query_params.__contains__("ID") and Customer.objects.all().filter(cutomer_id=self.request.query_params["ID"]).exists():
+            customer_instance=Customer.objects.get(cutomer_id=self.request.query_params["ID"])
             details = {'name':customer_instance.name,'ID':customer_instance.cutomer_id,'wallet':customer_instance.wallet,'email':customer_instance.email}
             return Response(details,status=status.HTTP_202_ACCEPTED)
         else :
@@ -31,7 +31,6 @@ class Details(APIView):
 class Transfer(APIView):
     def get(self,request,*args, **kwargs):
         transction={}
-        print(self.request.query_params)
         if self.request.query_params.__contains__("ID") and Customer.objects.all().filter(cutomer_id=self.request.query_params["ID"]).exists():
             customer_instance=Customer.objects.get(cutomer_id=self.request.query_params["ID"])
             # for i in customer_instance.to_customer:
